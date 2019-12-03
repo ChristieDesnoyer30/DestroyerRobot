@@ -7,22 +7,20 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
-public class IntakeSubsystem extends PIDSubsystem {
-  /**
-   * Add your docs here.
-   */
+public class IntakeSubsystem extends Subsystem {
+ Ultrasonic sonic = new Ultrasonic(RobotMap.ping, RobotMap.echo);
+
   public IntakeSubsystem() {
     // Intert a subsystem name and PID values here
-    super("SubsystemName", 1, 2, 3);
-    // Use these to get going:
-    // setSetpoint() - Sets where the PID controller should move the system
-    // to
-    // enable() - Enables the PID controller.
+    sonic.setAutomaticMode(true);
+    
   }
 
   @Override
@@ -31,17 +29,4 @@ public class IntakeSubsystem extends PIDSubsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  @Override
-  protected double returnPIDInput() {
-    // Return your input value for the PID loop
-    // e.g. a sensor, like a potentiometer:
-    // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return 0.0;
-  }
-
-  @Override
-  protected void usePIDOutput(double output) {
-    // Use output to drive your system, like a motor
-    // e.g. yourMotor.set(output);
-  }
 }
