@@ -29,10 +29,6 @@ public class DriveSubsystem extends Subsystem {
   Victor rightMotor = new Victor(RobotMap.robotRightMotor);
   Victor leftMotor = new Victor(RobotMap.robotLeftMotor);
 
-  
-  //PWM pulse-width modulation the average voltage electrons going through the coil for the current
-  //how quickly the motor should run and which direction
-  PWM motor = new PWM(1);
 
 
   // Encoders begin to count as soon as the robot is on and the motors move
