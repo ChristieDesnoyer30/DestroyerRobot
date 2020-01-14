@@ -12,7 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.AutoCommand;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.DriveForwardTimeoutCommand;
 import frc.robot.commands.DriveToDistanceCommand;
 import frc.robot.subsystems.DriveSubsystem;
 
@@ -29,6 +31,7 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   Command driveCommand = new DriveCommand();
+  Command autoCommand = new DriveForwardTimeoutCommand();
   Command driveToDistanceCommand = new DriveToDistanceCommand(5, 0.5);
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -82,19 +85,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
-
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-     */
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
+    autoCommand.start();
   }
 
   /**
@@ -115,9 +106,9 @@ public class Robot extends TimedRobot {
 
     driveCommand.start(); 
     
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
+    if (autoCommand != null) {
+      autoCommand.cancel();   
+     }
   }
 
   /**

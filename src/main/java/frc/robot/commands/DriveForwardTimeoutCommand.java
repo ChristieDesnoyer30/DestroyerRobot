@@ -19,13 +19,13 @@ public class DriveForwardTimeoutCommand extends Command {
   @Override
   protected void initialize() {
     Robot.drive_subsystem.stop();
-    setTimeout(3);
+    setTimeout(5);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drive_subsystem.drive(1,0);
+    Robot.drive_subsystem.drive(-0.8,0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
