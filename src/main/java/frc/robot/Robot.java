@@ -14,8 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AutoCommand;
 import frc.robot.commands.DriveCommand;
-import frc.robot.commands.DriveForwardTimeoutCommand;
-import frc.robot.commands.DriveToDistanceCommand;
 import frc.robot.subsystems.DriveSubsystem;
 
 /**
@@ -31,8 +29,7 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   Command driveCommand = new DriveCommand();
-  Command autoCommand = new DriveForwardTimeoutCommand();
-  Command driveToDistanceCommand = new DriveToDistanceCommand(5, 0.5);
+  Command autoCommand = new AutoCommand();
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
