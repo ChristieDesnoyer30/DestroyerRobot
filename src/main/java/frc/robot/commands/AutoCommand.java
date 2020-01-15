@@ -11,9 +11,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoCommand extends CommandGroup {
   public AutoCommand() {
-    addSequential(new DriveToDistanceCommand(15, .8));
-    
-    
+    addSequential(new DriveToDistanceCommand(-0.8, 0));
+    addSequential(new DriveToDistanceCommand(-0.8, -0.5));
+    addSequential(new DriveToDistanceCommand(-0.8, 0));
+    addSequential(new DriveToDistanceCommand(-0.8, 0.5));
+    addSequential(new DriveToDistanceCommand(-0.8, 0));
+    addSequential(new DriveToDistanceCommand(-0.8, -0.5));
+    addSequential(new DriveToDistanceCommand(-0.8, 0));
   }
 
   
