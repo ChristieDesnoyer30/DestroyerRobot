@@ -11,7 +11,15 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class DriveForwardTimeoutCommand extends Command {
+  double speed;
+  double rotationalSpeed;
   public DriveForwardTimeoutCommand() {
+   
+  }
+
+  public DriveForwardTimeoutCommand(double speed, double rotationalSpeed) {
+    this.speed = speed;
+    this.rotationalSpeed = rotationalSpeed;
    
   }
 
@@ -25,7 +33,7 @@ public class DriveForwardTimeoutCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drive_subsystem.drive(-0.8,0);
+    Robot.drive_subsystem.drive(speed, rotationalSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
