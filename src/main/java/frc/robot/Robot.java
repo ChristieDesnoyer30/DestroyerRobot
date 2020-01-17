@@ -27,9 +27,8 @@ public class Robot extends TimedRobot {
   public static DriveSubsystem drive_subsystem = new DriveSubsystem();
   public static OI m_oi;
 
-  Command m_autonomousCommand;
-  Command driveCommand = new DriveCommand();
-  Command autoCommand = new AutoCommand();
+  Command driveCommand;
+  Command autoCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
@@ -39,6 +38,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
+    autoCommand = new AutoCommand();
+    driveCommand = new DriveCommand();
+    
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -82,7 +84,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    autoCommand.start();
+    if (autoCommand != null) autoCommand.start();
   }
 
   /**
@@ -103,9 +105,9 @@ public class Robot extends TimedRobot {
 
     driveCommand.start(); 
     
-    if (autoCommand != null) {
-      autoCommand.cancel();   
-     }
+    // if (autoCommand != null) {
+    //   autoCommand.cancel();   
+    //  }
   }
 
   /**
